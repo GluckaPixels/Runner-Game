@@ -21,7 +21,7 @@ public class MoveLeftR : MonoBehaviour
 
         if(playerCtrScript.gameOver == false)
         {  
-          transform.Translate(Vector3.left * speedLeft  * Time.deltaTime );
+          transform.Translate(Vector3.back * speedLeft  * Time.deltaTime );
         }
 
      
