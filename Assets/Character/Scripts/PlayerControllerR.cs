@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+
 
 public class PlayerControllerR : MonoBehaviour
 {
@@ -15,39 +17,59 @@ public class PlayerControllerR : MonoBehaviour
     public AudioClip jumpSFX; 
     public AudioClip crashSFX ; 
     private AudioSource playerAudio ; 
-
+   
     private Animator playerAnim; 
+     
+
 
     void Start()
     {
         playerRb = GetComponent<Rigidbody>() ;
         playerAnim = GetComponent<Animator>() ;
         playerAudio = GetComponent<AudioSource>(); 
-         
+        
     }
 
     void Update()
     {
          if(Input.GetKey(KeyCode.RightArrow) && gameOver == false)
          {
+           
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime) ;
             playerAnim.SetBool("Run_b", true) ;
-            playerAnim.SetBool("Idle_b", false) ;
+            playerAnim.SetBool("Idle_b", false) ;   
          }
 
          else if (Input.GetKeyUp(KeyCode.RightArrow))
          {
             playerAnim.SetBool("Idle_b", true) ;
+         
          }
 
+        ////left move control block
+         if(Input.GetKey(KeyCode.LeftArrow) && gameOver == false)
+         {  
+          
+            transform.Translate(Vector3.forward * -moveSpeed * Time.deltaTime) ;
+            playerAnim.SetBool("Run_b", true) ;
+            playerAnim.SetBool("Idle_b", false) ;   
+         }
+
+         else if (Input.GetKeyUp(KeyCode.LeftArrow))
+         {
+            playerAnim.SetBool("Idle_b", true) ;
+         
+         }
+        /////end
+     
 
         if(Input.GetKeyDown(KeyCode.Space) && isOnGround && gameOver != true)
         {      
             
                playerRb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse); 
                isOnGround = false; 
-               playerAnim.SetTrigger("Jump_trig") ;
-               dirtPS.Stop() ;
+              // playerAnim.SetTrigger("Jump_trig") ;
+               StopPlayingParticles();
                playerAudio.PlayOneShot(jumpSFX, 1.0f); 
         }
     }
@@ -58,7 +80,7 @@ public class PlayerControllerR : MonoBehaviour
         if(collision.gameObject.CompareTag("Ground"))
         {
               isOnGround = true;
-              dirtPS.Play() ;    
+               
         }
         
    if(collision.gameObject.CompareTag("Obstacle"))
@@ -68,16 +90,20 @@ public class PlayerControllerR : MonoBehaviour
             playerAnim.SetTrigger("Die_trig") ;
             playerAudio.PlayOneShot(crashSFX, 1.0f); 
             gameOver = true;
-            dirtPS.Stop() ; 
+            
         }
 
     }
-
-    private void OnTriggerStay(Collider other)
+    public void StopPlayingParticles()
     {
-        if(other.gameObject.tag == "Rock")
-        Debug.Log("collided with a ROCK");
+      dirtPS.Stop() ; 
     }
+
+    public void PlayingParticles()
+    {
+        dirtPS.Play() ; 
         
+    }
+
     }
 

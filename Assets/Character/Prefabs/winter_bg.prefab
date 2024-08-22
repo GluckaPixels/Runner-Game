@@ -5985,8 +5985,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1991819408665938123}
-  - component: {fileID: 3007848127564770799}
-  - component: {fileID: 3793997544695906213}
   m_Layer: 0
   m_Name: winter_bg
   m_TagString: Background
@@ -6175,31 +6173,6 @@ Transform:
   - {fileID: 757590163943485476}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3007848127564770799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4173950500114544018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8707581321a9b0a4dbdb84881053a4f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3793997544695906213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4173950500114544018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3fd125e85421f2448e5752039b5c012, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedLeft: -2.5
 --- !u!1 &4213353740362253179
 GameObject:
   m_ObjectHideFlags: 0

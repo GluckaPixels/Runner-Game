@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveLeftR : MonoBehaviour
 {
      public float speedLeft = -2.5f; 
-    private float posBounds = 25.0f;
+    //private float posBounds = 25.0f;
 
    public PlayerControllerR playerCtrScript; 
    
